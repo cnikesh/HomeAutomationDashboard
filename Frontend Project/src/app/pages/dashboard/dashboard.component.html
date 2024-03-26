@@ -1,0 +1,26 @@
+<mat-tab-group (selectedIndexChange)="onTabChange($event)">
+    <mat-tab label="Living Room">
+        @defer(when selectedTabIndex() === 0; prefetch when prefetchTabs()){
+        <div class="device-group" *ngFor="let type of deviceTypes">
+            <h3 class="title">{{type.typeName}}</h3>
+            <div class="container responsive-grid">
+                    <app-widget-toggles *ngFor="let device of type.devices" [device]="device"/>
+            </div>
+        </div>
+    }
+    </mat-tab>
+    <mat-tab label="Bedroom 1">         
+        @defer(when selectedTabIndex() === 1; prefetch when prefetchTabs()){
+            <div class="device-group" *ngFor="let type of deviceTypes">
+                <h3 class="title">{{type.typeName}}</h3>
+                <div class="container responsive-grid">
+                        <app-widget-toggles *ngFor="let device of type.devices" [device]="device"/>
+                </div>
+            </div>
+        
+
+    } </mat-tab>
+    <mat-tab label="Kitchen"> Kitchen </mat-tab>
+    <mat-tab label="Garage"> Garage </mat-tab>
+    <mat-tab label="Porch Area"> Porch Area </mat-tab>
+</mat-tab-group>
